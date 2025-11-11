@@ -25,7 +25,6 @@ import { activate as commonActivate } from '@/shared/activate'
 import { registerChatParticipant } from '@/chat';
 import { addUnsupervisedActions, registerUnsupervisedHandlers } from './unsupervised';
 import { registerSendSelectionToNeuro } from '@/editing';
-import { loadIgnoreFiles } from '@/ignore_files_utils';
 import { reregisterAllActions } from '../rce';
 
 export function activate(context: vscode.ExtensionContext) {
