@@ -21,6 +21,7 @@ import {
     showUpdateReminder,
     startupCreateClient,
 } from '@shared/extension';
+import { activate as commonActivate } from '@/shared/activate'
 import { registerChatParticipant } from '@/chat';
 import { addUnsupervisedActions, registerUnsupervisedHandlers } from './unsupervised';
 import { registerSendSelectionToNeuro } from '@/editing';
@@ -28,31 +29,8 @@ import { loadIgnoreFiles } from '@/ignore_files_utils';
 import { reregisterAllActions } from '../rce';
 
 export function activate(context: vscode.ExtensionContext) {
-    loadIgnoreFiles(
-        normalizePath(
-            getWorkspacePath() || '',
-        ) || '',
-    );
-
-    // Initialize common state
-    initializeCommonState(context);
-
-    // Show update reminder if version changed
-    showUpdateReminder(context);
-
-    vscode.commands.registerCommand('neuropilot.reloadPermissions', reloadDesktopPermissions);
-
-    // Add actions to the registry
-    addUnsupervisedActions();
-
-    // Setup providers
-    NEURO.context!.subscriptions.push(...setupCommonProviders());
-
-    // Register commands
-    NEURO.context!.subscriptions.push(...registerCommonCommands());
-
-    // Setup event handlers
-    NEURO.context!.subscriptions.push(...setupCommonEventHandlers());
+    // Add common activation functions
+    commonActivate(context, addUnsupervisedActions)    
 
     // Desktop-specific handlers
     NEURO.context!.subscriptions.push(vscode.tasks.onDidEndTask(taskEndedHandler));
