@@ -311,7 +311,7 @@ export function combineGlobLinesToRegExp(lines: string[]): RegExp {
     return new RegExp(result);
 }
 
-import { fastIsItIgnored } from '@/ignore_files_utils';
+import { fastIsItIgnored } from '@/ignore_utils';
 import { unregisterAllActions } from './rce';
 
 /**
