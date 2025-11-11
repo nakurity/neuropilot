@@ -8,7 +8,7 @@ import {
     getVisibleFiles,
     loadIgnoreFiles,
     resetIgnoreState,
-} from '../../ignore_files_utils';
+} from '../../ignore_utils';
 
 const TEST_IGNORE_FILENAME = '.neuropilotignore';
 
