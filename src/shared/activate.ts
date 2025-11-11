@@ -12,7 +12,7 @@ import {
 import { registerSendSelectionToNeuro } from '@/editing';
 import { loadIgnoreFiles } from '@/ignore_utils';
 
-export function activate(context: vscode.ExtensionContext, registerUnsupervisedActions: function) {
+export function activate(context: vscode.ExtensionContext, addUnsupervisedActions: function, reloadPermissions: function) {
     loadIgnoreFiles( // Load initial contents to ignore
         normalizePath( // Provide the workspace path to the function
             getWorkspacePath() || '',
@@ -25,7 +25,7 @@ export function activate(context: vscode.ExtensionContext, registerUnsupervisedA
     // Show update reminder if version changed
     showUpdateReminder(context);
 
-    vscode.commands.registerCommand('neuropilot.reloadPermissions', reloadDesktopPermissions);
+    vscode.commands.registerCommand('neuropilot.reloadPermissions', reloadPermissions);
 
     // Add actions to the registry
     addUnsupervisedActions();
