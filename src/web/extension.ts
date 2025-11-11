@@ -25,7 +25,7 @@ import { loadIgnoreFiles } from '@/ignore_files_utils';
 import { reregisterAllActions } from '../rce';
 
 export function activate(context: vscode.ExtensionContext) {
-    commonActivate(context, addUnsupervisedActions)
+    commonActivate(context, addUnsupervisedActions, reloadWebPermissions)
 
     // Setup client connected handlers
     setupClientConnectedHandlers(() => reregisterAllActions(false), registerUnsupervisedHandlers);
