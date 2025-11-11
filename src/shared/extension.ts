@@ -13,7 +13,7 @@ import { getGitExtension } from '@/git';
 import { openDocsOnTarget, registerDocsCommands, registerDocsLink } from './docs';
 import { readChangelogAndSendToNeuro } from '@/changelog';
 import { moveCursorEmitterDiposable } from '@events/cursor';
-import { loadIgnoreFiles } from '@/ignore_files_utils';
+import { loadIgnoreFiles } from '@/ignore_utils';
 import { getWorkspacePath, normalizePath } from '@/utils';
 import { ActionsViewProvider } from '@/views/actions';
 
