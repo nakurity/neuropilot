@@ -13,7 +13,11 @@ import {
 import { registerSendSelectionToNeuro } from '@/editing';
 import { loadIgnoreFiles } from '@/ignore_utils';
 
-export function activate(context: vscode.ExtensionContext, addUnsupervisedActions: Function, reloadPermissions: Function) {
+export function activate(
+    context: vscode.ExtensionContext,
+    addUnsupervisedActions: () => void,
+    reloadPermissions: () => void
+) {
     loadIgnoreFiles( // Load initial contents to ignore
         normalizePath( // Provide the workspace path to the function
             getWorkspacePath() || '',
