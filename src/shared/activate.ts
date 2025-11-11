@@ -1,3 +1,4 @@
+import * as vscode from 'vscode';
 import { normalizePath, getWorkspacePath } from '@/utils';
 import { NEURO } from '@/constants';
 import {
