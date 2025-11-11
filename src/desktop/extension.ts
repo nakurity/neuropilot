@@ -30,7 +30,7 @@ import { reregisterAllActions } from '../rce';
 
 export function activate(context: vscode.ExtensionContext) {
     // Add common activation functions
-    commonActivate(context, addUnsupervisedActions)    
+    commonActivate(context, addUnsupervisedActions, reloadDesktopPermissions)    
 
     // Desktop-specific handlers
     NEURO.context!.subscriptions.push(vscode.tasks.onDidEndTask(taskEndedHandler));
