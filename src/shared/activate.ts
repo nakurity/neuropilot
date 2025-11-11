@@ -1,4 +1,18 @@
-export function activate(context: vscode.ExtensionContext) {
+import { normalizePath, getWorkspacePath } from '@/utils';
+import { NEURO } from '@/constants';
+import {
+    initializeCommonState,
+    setupCommonProviders,
+    registerCommonCommands,
+    setupCommonEventHandlers,
+    setupClientConnectedHandlers,
+    reloadPermissions,
+    showUpdateReminder,
+} from '@shared/extension';
+import { registerSendSelectionToNeuro } from '@/editing';
+import { loadIgnoreFiles } from '@/ignore_utils';
+
+export function activate(context: vscode.ExtensionContext, registerUnsupervisedActions: function) {
     loadIgnoreFiles( // Load initial contents to ignore
         normalizePath( // Provide the workspace path to the function
             getWorkspacePath() || '',
